@@ -1,0 +1,18 @@
+{
+  "Comment": "Validate the HTTPS certificate for tv.cristiancaroli.com",
+  "Changes": [
+    {
+      "Action": "UPSERT",
+      "ResourceRecordSet": {
+        "Name": "_ab1bad04eb09ed2bcb772c99725dbe93.tv.cristiancaroli.com.",
+        "Type": "CNAME",
+        "TTL": 300,
+        "ResourceRecords": [
+          {
+            "Value": "_49b70f85eab8096748dbb61c53073695.jkddzztszm.acm-validations.aws."
+          }
+        ]
+      }
+    }
+  ]
+}
