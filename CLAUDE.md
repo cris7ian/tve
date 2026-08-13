@@ -22,7 +22,7 @@ Use Node.js 22.13.0 or later.
 ## Architecture
 
 - `app/page.tsx` contains the single live-stream screen. It embeds the
-  privacy-enhanced channel-level YouTube live player for RTVE Noticias.
+  privacy-enhanced YouTube player URL for Canal 24 Horas.
 - `app/layout.tsx` defines the Spanish metadata, PWA manifest, and production
   URL.
 - `next.config.ts` creates the static export only when `TVE_STATIC_EXPORT=1`.
@@ -36,8 +36,6 @@ Use Node.js 22.13.0 or later.
 - Keep the interface in Spanish.
 - Preserve the `youtube-nocookie.com` embed host. The rendered-HTML test
   rejects links to the normal YouTube watch page.
-- Preserve the RTVE Noticias channel-level live endpoint. Do not pin the player
-  to one broadcast video ID.
 - Keep the embedded player full-screen and non-interactive. The only app
   control is a large play button that prevents taps from reaching YouTube.
 - Attempt autoplay when the app opens. Pause the player whenever the app
