@@ -14,6 +14,8 @@ type PlayerMessage = {
 
 export default function Home() {
   const playerRef = useRef<HTMLIFrameElement>(null);
+  const wasHiddenRef = useRef(false);
+  const reloadRequestedRef = useRef(false);
   const [hasStarted, setHasStarted] = useState(false);
 
   const sendPlayerCommand = useCallback((command: "playVideo" | "pauseVideo") => {
@@ -28,6 +30,13 @@ export default function Home() {
   }, [sendPlayerCommand]);
 
   useEffect(() => {
+    function refreshApp() {
+      if (reloadRequestedRef.current) return;
+
+      reloadRequestedRef.current = true;
+      window.location.reload();
+    }
+
     function handlePlayerMessage(event: MessageEvent) {
       if (event.origin !== PLAYER_ORIGIN) return;
 
@@ -47,25 +56,33 @@ export default function Home() {
 
     function handleVisibilityChange() {
       if (document.visibilityState === "hidden") {
+        wasHiddenRef.current = true;
         sendPlayerCommand("pauseVideo");
         setHasStarted(false);
-      } else {
-        playStream();
+      } else if (wasHiddenRef.current) {
+        refreshApp();
       }
     }
 
     function handlePageHide() {
+      wasHiddenRef.current = true;
       sendPlayerCommand("pauseVideo");
       setHasStarted(false);
     }
 
+    function handlePageShow(event: PageTransitionEvent) {
+      if (event.persisted) refreshApp();
+    }
+
     window.addEventListener("message", handlePlayerMessage);
     window.addEventListener("pagehide", handlePageHide);
+    window.addEventListener("pageshow", handlePageShow);
     document.addEventListener("visibilitychange", handleVisibilityChange);
 
     return () => {
       window.removeEventListener("message", handlePlayerMessage);
       window.removeEventListener("pagehide", handlePageHide);
+      window.removeEventListener("pageshow", handlePageShow);
       document.removeEventListener("visibilitychange", handleVisibilityChange);
     };
   }, [playStream, sendPlayerCommand]);
