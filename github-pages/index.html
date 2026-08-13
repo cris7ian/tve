@@ -184,7 +184,7 @@
 
       <p class="intro">Mi abuela ha pasado varias semanas en el hospital y se ha aburrido bastante. Usar las aplicaciones de televisión online, como Mediaset o Atresplayer, le es prácticamente imposible porque nunca ha aprendido a usar bien el teléfono. Por eso le hice esta pequeña app web: para que pueda ver TVE en directo con un solo toque en un icono y apagar la transmisión al cerrarla.</p>
 
-      <section class="steps" aria-label="Cómo instalar la aplicación">
+      <section class="steps" data-platform="android" aria-label="Cómo instalar la aplicación en Android">
         <article class="step">
           <span class="number">1</span>
           <div>
@@ -218,10 +218,53 @@
         </article>
       </section>
 
+      <section class="steps" data-platform="ios" hidden aria-label="Cómo instalar la aplicación en iPhone o iPad">
+        <article class="step">
+          <span class="number">1</span>
+          <div>
+            <h2>Abre Safari</h2>
+            <p>En el iPhone o iPad, abre <strong>Safari</strong>.</p>
+          </div>
+        </article>
+
+        <article class="step">
+          <span class="number">2</span>
+          <div>
+            <h2>Entra en la página</h2>
+            <p>Escribe <strong>tv.cristiancaroli.com</strong> y toca Ir.</p>
+          </div>
+        </article>
+
+        <article class="step">
+          <span class="number">3</span>
+          <div>
+            <h2>Toca Compartir</h2>
+            <p>Toca el icono de compartir: un cuadrado con una flecha hacia arriba.</p>
+          </div>
+        </article>
+
+        <article class="step">
+          <span class="number">4</span>
+          <div>
+            <h2>Añádela a inicio</h2>
+            <p>Toca <strong>“Añadir a pantalla de inicio”</strong> y después <strong>“Añadir”</strong>. El icono <strong>TVE Directo</strong> aparecerá en la pantalla de inicio.</p>
+          </div>
+        </article>
+      </section>
+
       <aside class="note">
         <p><strong>Si no empieza el vídeo:</strong> toca el botón grande de reproducir que aparece en la pantalla.</p>
         <p><span class="heart">♥</span> Está hecha para que sea fácil de usar para cualquier abuelito o abuelita: sin menús, sin cuentas y sin complicaciones. Me gustaría añadir más canales, pero por ahora solo TVE ofrece una transmisión libre en YouTube.</p>
       </aside>
     </main>
+    <script>
+      const isIos = /iPad|iPhone|iPod/.test(navigator.userAgent)
+        || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+
+      if (isIos) {
+        document.querySelector('[data-platform="android"]').hidden = true;
+        document.querySelector('[data-platform="ios"]').hidden = false;
+      }
+    </script>
   </body>
 </html>
