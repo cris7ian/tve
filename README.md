@@ -1,43 +1,57 @@
 # TVE en directo
 
-Aplicación web instalable para abrir el Canal 24 Horas de RTVE Noticias desde
-un icono en Android.
+An installable web app that plays the RTVE Noticias Canal 24 Horas live stream.
+It is designed to open from an Android home-screen icon.
 
-## Desarrollo
+## Requirements
+
+- Node.js 22.13.0 or later.
+- npm.
+
+## Development
+
+Install dependencies and start the local server:
 
 ```sh
-npm install
+npm ci
 npm run dev
 ```
 
-## Verificación
+## Commands
 
 ```sh
-npm test
+npm run dev           # Local Vinext and Cloudflare server.
+npm run build         # Cloudflare worker build.
+npm run build:static  # Static export in dist/client.
+npm test              # Build and test rendered HTML.
+npm run lint          # Run ESLint.
+./scripts/verify.sh   # Run tests and validate the static export.
 ```
 
-## Publicación
+## Deployment
 
-`scripts/deploy_web.sh` genera el sitio estático, lo publica en el bucket S3
-`tv.cristiancaroli.com` e invalida la distribución de CloudFront. Usa el perfil
-AWS `personal` de forma predeterminada.
+`scripts/deploy_web.sh` runs verification, publishes `dist/client` to the S3
+bucket `tv.cristiancaroli.com`, and invalidates CloudFront.
+
+To deploy from a local machine, configure AWS credentials. The script uses the
+`personal` profile when `AWS_ACCESS_KEY_ID` is not set. Use `AWS_PROFILE` or
+`DISTRIBUTION_ID` to override these values.
 
 ```sh
 ./scripts/deploy_web.sh
 ```
 
-Cada push a `main` ejecuta `.github/workflows/deploy.yml`. El workflow valida
-la aplicación, publica `dist/client` en S3 e invalida CloudFront. GitHub obtiene
-credenciales temporales mediante OpenID Connect; el repositorio no guarda
-claves AWS.
+Each push to `main` runs `.github/workflows/deploy.yml`. The workflow uses
+encrypted GitHub secrets for a dedicated AWS user. Its policy only permits
+publishing this bucket and invalidating this CloudFront distribution. The
+repository contains no AWS keys.
 
-## Instalación en Android
+## Install on Android
 
-1. Abre `https://tv.cristiancaroli.com` en Chrome.
-2. Abre el menú de Chrome.
-3. Pulsa **Añadir a pantalla de inicio** o **Instalar aplicación**.
-4. Confirma el nombre **TVE Directo**.
-5. Abre el nuevo icono y comprueba el sonido.
+1. Open [TVE en directo](https://tv.cristiancaroli.com) in Chrome.
+2. Open the Chrome menu.
+3. Tap **Add to Home screen** or **Install app**.
+4. Confirm the name **TVE Directo**.
+5. Open the icon and check the audio.
 
-Si Chrome bloquea la reproducción automática, toca una vez el botón de
-reproducción que aparece sobre el vídeo.
+If Chrome blocks autoplay, tap the play button that appears over the video.
