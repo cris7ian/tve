@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 
 const STREAM_URL =
-  "https://www.youtube-nocookie.com/embed/b4tE5aKhtlg?autoplay=1&playsinline=1&controls=0&disablekb=1&enablejsapi=1&fs=0&iv_load_policy=3&rel=0&hl=es&origin=https%3A%2F%2Ftv.cristiancaroli.com";
+  "https://www.youtube-nocookie.com/embed/live_stream?channel=UC7QZIf0dta-XPXsp9Hv4dTw&autoplay=1&playsinline=1&controls=0&disablekb=1&enablejsapi=1&fs=0&iv_load_policy=3&rel=0&hl=es&origin=https%3A%2F%2Ftv.cristiancaroli.com";
 
 const PLAYER_ORIGIN = "https://www.youtube-nocookie.com";
 

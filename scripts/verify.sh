@@ -13,7 +13,8 @@ test -f dist/client/manifest.webmanifest
 test -f dist/client/icon-192.png
 test -f dist/client/icon-512.png
 
-grep -q 'youtube-nocookie.com/embed/b4tE5aKhtlg' dist/client/index.html
+grep -q 'youtube-nocookie.com/embed/live_stream' dist/client/index.html
+grep -q 'channel=UC7QZIf0dta-XPXsp9Hv4dTw' dist/client/index.html
 grep -q '"display": "standalone"' dist/client/manifest.webmanifest
 grep -q '"id": "/"' dist/client/manifest.webmanifest
 grep -q 'apple-mobile-web-app-capable' dist/client/index.html
