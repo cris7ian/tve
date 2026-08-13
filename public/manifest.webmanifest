@@ -3,6 +3,7 @@
   "short_name": "TVE Directo",
   "description": "Acceso sencillo al Canal 24 Horas de RTVE Noticias.",
   "lang": "es",
+  "id": "/",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",

@@ -31,10 +31,14 @@ test("renders the TVE live stream experience", async () => {
   assert.match(html, /<html lang="es">/i);
   assert.match(html, /<title>TVE en directo<\/title>/i);
   assert.match(html, /youtube-nocookie\.com\/embed\/b4tE5aKhtlg/);
-  assert.match(html, /autoplay=1/);
-  assert.match(html, /allowFullScreen|allowfullscreen/i);
-  assert.match(html, /<form action="\/" method="get">/i);
-  assert.match(html, /Si no se ve, volver a cargar/);
+  assert.match(html, /autoplay=0/);
+  assert.match(html, /controls=0/);
+  assert.match(html, /disablekb=1/);
+  assert.match(html, /enablejsapi=1/);
+  assert.match(html, /aria-label="Reproducir TVE"/i);
+  assert.equal(html.match(/<button\b/gi)?.length, 1);
+  assert.doesNotMatch(html, /<form\b/i);
+  assert.doesNotMatch(html, /allowFullScreen|allowfullscreen/i);
   assert.doesNotMatch(html, /href="https:\/\/www\.youtube\.com\/watch/);
   assert.match(html, /manifest\.webmanifest/);
   assert.doesNotMatch(html, /codex-preview|SkeletonPreview/);

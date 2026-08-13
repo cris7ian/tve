@@ -61,6 +61,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
+      <head>
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-title" content="TVE Directo" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+      </head>
       <body>{children}</body>
     </html>
   );
