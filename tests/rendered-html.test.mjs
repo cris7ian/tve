@@ -33,7 +33,9 @@ test("renders the TVE live stream experience", async () => {
   assert.match(html, /youtube-nocookie\.com\/embed\/b4tE5aKhtlg/);
   assert.match(html, /autoplay=1/);
   assert.match(html, /allowFullScreen|allowfullscreen/i);
-  assert.match(html, /Si no se ve, tocar aquí/);
+  assert.match(html, /<form action="\/" method="get">/i);
+  assert.match(html, /Si no se ve, volver a cargar/);
+  assert.doesNotMatch(html, /href="https:\/\/www\.youtube\.com\/watch/);
   assert.match(html, /manifest\.webmanifest/);
   assert.doesNotMatch(html, /codex-preview|SkeletonPreview/);
 });
