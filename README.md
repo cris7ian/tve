@@ -26,6 +26,11 @@ AWS `personal` de forma predeterminada.
 ./scripts/deploy_web.sh
 ```
 
+Cada push a `main` ejecuta `.github/workflows/deploy.yml`. El workflow valida
+la aplicación, publica `dist/client` en S3 e invalida CloudFront. GitHub obtiene
+credenciales temporales mediante OpenID Connect; el repositorio no guarda
+claves AWS.
+
 ## Instalación en Android
 
 1. Abre `https://tv.cristiancaroli.com` en Chrome.
