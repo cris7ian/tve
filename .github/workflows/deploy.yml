@@ -36,6 +36,7 @@ jobs:
         with:
           role-to-assume: arn:aws:iam::397565768461:role/github-actions-tve-deploy
           aws-region: eu-west-1
+          retry-max-attempts: 3
 
       - name: Verify and deploy
         env:
