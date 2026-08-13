@@ -31,7 +31,7 @@ test("renders the TVE live stream experience", async () => {
   assert.match(html, /<html lang="es">/i);
   assert.match(html, /<title>TVE en directo<\/title>/i);
   assert.match(html, /youtube-nocookie\.com\/embed\/b4tE5aKhtlg/);
-  assert.match(html, /autoplay=0/);
+  assert.match(html, /autoplay=1/);
   assert.match(html, /controls=0/);
   assert.match(html, /disablekb=1/);
   assert.match(html, /enablejsapi=1/);

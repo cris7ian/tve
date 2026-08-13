@@ -38,6 +38,8 @@ Use Node.js 22.13.0 or later.
   rejects links to the normal YouTube watch page.
 - Keep the embedded player full-screen and non-interactive. The only app
   control is a large play button that prevents taps from reaching YouTube.
+- Attempt autoplay when the app opens or returns to the foreground. Pause the
+  player whenever the app becomes hidden or closes.
 - Run `./scripts/verify.sh` before a production deployment.
 - Do not store AWS credentials in this repository. Local deploys use ambient
   credentials or the `personal` AWS profile. GitHub Actions uses encrypted

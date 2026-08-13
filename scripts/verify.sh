@@ -25,5 +25,7 @@ fi
 
 test "$(grep -Eo '<button\b' dist/client/index.html | wc -l | tr -d ' ')" = "1"
 grep -q 'aria-label="Reproducir TVE"' dist/client/index.html
+grep -Rq 'visibilitychange' dist/client/_next/static/chunks
+grep -Rq 'pauseVideo' dist/client/_next/static/chunks
 
 echo "Verification complete."
