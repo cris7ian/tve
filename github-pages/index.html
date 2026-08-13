@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Guía sencilla para instalar TVE en directo en un teléfono Android."
+    />
+    <title>TVE en directo · Guía fácil</title>
+    <style>
+      :root {
+        --ink: #1f2440;
+        --paper: #fffdf6;
+        --pink: #ff7897;
+        --yellow: #ffe36a;
+        --blue: #82d7ff;
+        --mint: #9df0c5;
+        --purple: #bda4ff;
+      }
+
+      * { box-sizing: border-box; }
+
+      html { background: #7bd4ff; }
+
+      body {
+        min-width: 20rem;
+        margin: 0;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at 5% 11%, #fff7a9 0 3.4rem, transparent 3.5rem),
+          radial-gradient(circle at 94% 8%, #fda6c8 0 5rem, transparent 5.1rem),
+          linear-gradient(135deg, #8cdbff, #d1f7ff 48%, #abebd1);
+        font-family: "Comic Sans MS", "Chalkboard SE", "Marker Felt", cursive;
+        line-height: 1.35;
+      }
+
+      .page {
+        width: min(72rem, calc(100% - 2rem));
+        margin: 0 auto;
+        padding: 2rem 0 4rem;
+      }
+
+      .hero {
+        position: relative;
+        overflow: hidden;
+        padding: clamp(2rem, 7vw, 5rem);
+        text-align: center;
+        background: var(--paper);
+        border: 0.3rem solid var(--ink);
+        border-radius: 2rem 1rem 2.5rem 1.25rem;
+        box-shadow: 0.7rem 0.7rem 0 var(--ink);
+      }
+
+      .hero::before,
+      .hero::after {
+        position: absolute;
+        color: var(--yellow);
+        font-size: clamp(4rem, 10vw, 8rem);
+        line-height: 1;
+      }
+
+      .hero::before { content: "✦"; top: 0.5rem; left: 1.5rem; transform: rotate(-18deg); }
+      .hero::after { content: "✦"; right: 1rem; bottom: 0.4rem; transform: rotate(17deg); }
+
+      .eyebrow {
+        display: inline-block;
+        margin: 0 0 0.75rem;
+        padding: 0.45rem 0.9rem;
+        font-weight: 700;
+        background: var(--mint);
+        border: 0.2rem solid var(--ink);
+        border-radius: 999px;
+        transform: rotate(-2deg);
+      }
+
+      h1, h2, p { margin-top: 0; }
+
+      h1 {
+        max-width: 14ch;
+        margin: 0 auto 1rem;
+        font-size: clamp(2.8rem, 9vw, 6rem);
+        line-height: 0.95;
+        letter-spacing: -0.07em;
+      }
+
+      .lead {
+        max-width: 40rem;
+        margin: 0 auto;
+        font-size: clamp(1.25rem, 3vw, 1.7rem);
+        font-weight: 700;
+      }
+
+      .go {
+        display: inline-block;
+        margin-top: 1.7rem;
+        padding: 0.9rem 1.4rem;
+        color: var(--ink);
+        font-size: 1.25rem;
+        font-weight: 700;
+        text-decoration: none;
+        background: var(--pink);
+        border: 0.22rem solid var(--ink);
+        border-radius: 0.8rem;
+        box-shadow: 0.28rem 0.28rem 0 var(--ink);
+      }
+
+      .go:hover, .go:focus-visible { transform: translate(0.15rem, 0.15rem); box-shadow: 0.13rem 0.13rem 0 var(--ink); }
+      .go:focus-visible { outline: 0.25rem solid #fff; outline-offset: 0.25rem; }
+
+      .intro {
+        margin: 2.5rem auto;
+        padding: 1.3rem 1.6rem;
+        font-size: 1.22rem;
+        font-weight: 700;
+        text-align: center;
+        background: var(--yellow);
+        border: 0.25rem solid var(--ink);
+        border-radius: 1rem 1.7rem 1rem 1.5rem;
+        transform: rotate(0.5deg);
+      }
+
+      .steps { display: grid; gap: 1.5rem; }
+
+      .step {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 1rem;
+        align-items: start;
+        padding: clamp(1.25rem, 4vw, 2.1rem);
+        border: 0.25rem solid var(--ink);
+        box-shadow: 0.45rem 0.45rem 0 var(--ink);
+      }
+
+      .step:nth-child(1) { background: var(--pink); border-radius: 1.6rem 0.8rem 1.5rem 0.8rem; }
+      .step:nth-child(2) { background: var(--mint); border-radius: 0.8rem 1.6rem 0.8rem 1.5rem; }
+      .step:nth-child(3) { background: var(--purple); border-radius: 1.5rem 0.8rem 1.7rem 0.7rem; }
+      .step:nth-child(4) { background: var(--yellow); border-radius: 0.8rem 1.7rem 0.7rem 1.5rem; }
+
+      .number {
+        display: grid;
+        width: 3.4rem;
+        aspect-ratio: 1;
+        place-items: center;
+        color: white;
+        font-size: 1.8rem;
+        font-weight: 700;
+        background: var(--ink);
+        border-radius: 50%;
+        transform: rotate(-8deg);
+      }
+
+      h2 { margin-bottom: 0.35rem; font-size: clamp(1.55rem, 5vw, 2.25rem); line-height: 1; }
+      .step p { margin-bottom: 0; font-size: clamp(1.08rem, 3vw, 1.35rem); font-weight: 700; }
+      .step strong { white-space: nowrap; }
+
+      .note {
+        margin-top: 2.5rem;
+        padding: 1.5rem;
+        font-size: 1.15rem;
+        background: var(--paper);
+        border: 0.25rem dashed var(--ink);
+        border-radius: 1.2rem;
+      }
+
+      .note p:last-child { margin-bottom: 0; }
+      .heart { color: #e83e70; font-size: 1.4em; }
+
+      @media (max-width: 35rem) {
+        .page { width: min(100% - 1.2rem, 72rem); padding-top: 0.8rem; }
+        .hero { box-shadow: 0.4rem 0.4rem 0 var(--ink); }
+        .step { box-shadow: 0.3rem 0.3rem 0 var(--ink); }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <section class="hero" aria-labelledby="titulo">
+        <p class="eyebrow">GUÍA MUY FÁCIL</p>
+        <h1 id="titulo">TVE en directo</h1>
+        <p class="lead">Un icono para ver la televisión en directo. Así de sencillo.</p>
+        <a class="go" href="https://tv.cristiancaroli.com">Abrir TVE en directo →</a>
+      </section>
+
+      <p class="intro">Mi abuela ha pasado varias semanas en el hospital y se ha aburrido bastante. Usar las aplicaciones de televisión online, como Mediaset o Atresplayer, le es prácticamente imposible porque nunca ha aprendido a usar bien el teléfono. Por eso le hice esta pequeña app web: para que pueda ver TVE en directo con un solo toque en un icono y apagar la transmisión al cerrarla.</p>
+
+      <section class="steps" aria-label="Cómo instalar la aplicación">
+        <article class="step">
+          <span class="number">1</span>
+          <div>
+            <h2>Abre Chrome</h2>
+            <p>En el teléfono Android, abre el navegador <strong>Chrome</strong>.</p>
+          </div>
+        </article>
+
+        <article class="step">
+          <span class="number">2</span>
+          <div>
+            <h2>Entra en la página</h2>
+            <p>Escribe <strong>tv.cristiancaroli.com</strong> y toca Ir.</p>
+          </div>
+        </article>
+
+        <article class="step">
+          <span class="number">3</span>
+          <div>
+            <h2>Toca los tres puntitos</h2>
+            <p>Están arriba a la derecha. Busca <strong>“Instalar aplicación”</strong> o <strong>“Añadir a pantalla de inicio”</strong>.</p>
+          </div>
+        </article>
+
+        <article class="step">
+          <span class="number">4</span>
+          <div>
+            <h2>¡Listo!</h2>
+            <p>Aparecerá el icono <strong>TVE Directo</strong> en la pantalla de inicio. Tócalo para ver televisión.</p>
+          </div>
+        </article>
+      </section>
+
+      <aside class="note">
+        <p><strong>Si no empieza el vídeo:</strong> toca el botón grande de reproducir que aparece en la pantalla.</p>
+        <p><span class="heart">♥</span> Está hecha para que sea fácil de usar para cualquier abuelito o abuelita: sin menús, sin cuentas y sin complicaciones. Me gustaría añadir más canales, pero por ahora solo TVE ofrece una transmisión libre en YouTube.</p>
+      </aside>
+    </main>
+  </body>
+</html>
