@@ -3,6 +3,16 @@
 An installable web app that plays the RTVE Noticias Canal 24 Horas live stream.
 It is designed to open from an Android home-screen icon.
 
+## Purpose
+
+This app was made for a hospitalized 90-year-old family member who cannot
+comfortably use a phone. It reduces the experience to one installed icon that
+opens live TV.
+
+Keep that accessibility goal central to future changes. The app should remain
+simple, reliable, and usable without navigation, account setup, or unfamiliar
+video controls.
+
 ## Requirements
 
 - Node.js 22.13.0 or later.

@@ -6,6 +6,16 @@ TVE en directo is a Spanish progressive web app (PWA) for the RTVE Canal 24
 Horas live stream. It uses React, Vinext, and Vite. Production is a static
 export served from Amazon S3 through CloudFront.
 
+## Purpose and user needs
+
+This app was made for a hospitalized 90-year-old family member who cannot
+comfortably use a phone. Its purpose is to provide live TV through one
+home-screen icon, with no navigation or complex controls.
+
+Treat simplicity and playback reliability as accessibility requirements. Do not
+add account flows, settings, navigation, or interactive player controls unless
+they directly support this user need.
+
 ## Commands
 
 - Install dependencies: `npm ci`
